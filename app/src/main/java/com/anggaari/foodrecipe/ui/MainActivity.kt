@@ -1,13 +1,13 @@
-package com.anggaari.foodrecipe
+package com.anggaari.foodrecipe.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.anggaari.foodrecipe.R
 import com.anggaari.foodrecipe.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -1,4 +1,4 @@
-package com.anggaari.foodrecipe
+package com.anggaari.foodrecipe.ui.fragments.recipes
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
