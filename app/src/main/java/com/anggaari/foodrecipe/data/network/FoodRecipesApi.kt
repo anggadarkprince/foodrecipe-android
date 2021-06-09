@@ -1,4 +1,4 @@
-package com.anggaari.foodrecipe
+package com.anggaari.foodrecipe.data.network
 
 import com.anggaari.foodrecipe.models.FoodRecipe
 import retrofit2.Response
