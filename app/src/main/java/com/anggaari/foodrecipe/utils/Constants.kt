@@ -1,4 +1,4 @@
-package com.anggaari.foodrecipe
+package com.anggaari.foodrecipe.utils
 
 class Constants {
 

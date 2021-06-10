@@ -1,6 +1,6 @@
 package com.anggaari.foodrecipe.di
 
-import com.anggaari.foodrecipe.Constants
+import com.anggaari.foodrecipe.utils.Constants
 import com.anggaari.foodrecipe.data.network.FoodRecipesApi
 import dagger.Module
 import dagger.Provides
