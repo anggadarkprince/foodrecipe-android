@@ -1,4 +1,4 @@
-package com.anggaari.foodrecipe
+package com.anggaari.foodrecipe.viewmodels
 
 import android.app.Application
 import android.content.Context
