@@ -84,7 +84,7 @@
                     android:id="@+id/favoriteImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="12dp"
                     android:layout_marginBottom="32dp"
                     android:contentDescription="@string/favorite"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -125,11 +125,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:fontFamily="@font/poppins"
+                    android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
-                    app:setNumberOfMinutes="@{result.readyInMinutes}"
                     app:layout_constraintStart_toEndOf="@+id/favoriteTextView"
                     app:layout_constraintTop_toBottomOf="@+id/clockImageView"
+                    app:setNumberOfMinutes="@{result.readyInMinutes}"
                     tools:text="60" />
 
                 <ImageView
@@ -150,6 +151,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="24dp"
                     android:fontFamily="@font/poppins"
+                    android:gravity="center_horizontal"
                     android:textAlignment="center"
                     app:applyVeganColor="@{result.vegan}"
                     app:layout_constraintStart_toEndOf="@+id/clockTextView"
