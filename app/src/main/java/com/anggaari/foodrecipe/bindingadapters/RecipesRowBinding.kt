@@ -9,13 +9,16 @@ import coil.load
 import com.anggaari.foodrecipe.R
 
 class RecipesRowBinding {
+
     companion object {
 
-        @BindingAdapter("loadImageFromUrl")
+        @BindingAdapter("loadImageUrl")
         @JvmStatic
-        fun loadImageFromUrl(imageView: ImageView, imageUrl: String) {
+        fun loadImageUrl(imageView: ImageView, imageUrl: String) {
             imageView.load(imageUrl) {
                 crossfade(600)
+                placeholder(R.drawable.ic_error_placeholder)
+                error(R.drawable.ic_error_placeholder)
             }
         }
 
