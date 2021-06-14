@@ -9,10 +9,14 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.anggaari.foodrecipe.R
 import com.anggaari.foodrecipe.viewmodels.MainViewModel
 import com.anggaari.foodrecipe.adapters.RecipesAdapter
 import com.anggaari.foodrecipe.databinding.FragmentRecipesBinding
+import com.anggaari.foodrecipe.utils.MarginItemDecoration
 import com.anggaari.foodrecipe.utils.NetworkResult
 import com.anggaari.foodrecipe.utils.observeOnce
 import com.anggaari.foodrecipe.viewmodels.RecipesViewModel
@@ -23,6 +27,8 @@ import kotlinx.coroutines.launch
 class RecipesFragment : Fragment() {
     private var _binding: FragmentRecipesBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<RecipesFragmentArgs>()
 
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipeViewModel: RecipesViewModel
@@ -46,19 +52,24 @@ class RecipesFragment : Fragment() {
         setupRecyclerView()
         readDatabase()
 
+        binding.recipeFloatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_recipesFragment_to_recipeBottomSheet)
+        }
+
         return binding.root;
     }
 
     private fun setupRecyclerView() {
         binding.recipeRecyclerView.adapter = adapter
         binding.recipeRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.recipeRecyclerView.addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.defaultSpace)))
         showShimmerEffect()
     }
 
     private fun readDatabase() {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
-                if (database.isNotEmpty()) {
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("RecipesFragment", "readDatabase() called")
                     Log.d("RecipesFragment", database[0].foodRecipe.toString())
                     adapter.setData(database[0].foodRecipe)

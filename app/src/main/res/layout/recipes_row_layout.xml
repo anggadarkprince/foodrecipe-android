@@ -12,9 +12,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/recipesRowLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="4dp">
+        android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/rowCardView"
@@ -36,7 +34,7 @@
 
                 <ImageView
                     android:id="@+id/recipeImageView"
-                    android:layout_width="170dp"
+                    android:layout_width="160dp"
                     android:layout_height="0dp"
                     android:scaleType="centerCrop"
                     app:loadImageUrl="@{result.image}"
@@ -57,7 +55,7 @@
                     android:fontFamily="@font/poppins_semibold"
                     android:maxLines="2"
                     android:textColor="@color/darker"
-                    android:textSize="20sp"
+                    android:textSize="18sp"
                     android:text="@{result.title}"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -69,10 +67,9 @@
                     android:id="@+id/descriptionTextView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="6dp"
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins"
-                    android:maxLines="3"
+                    android:maxLines="2"
                     android:textColor="@color/darkGray"
                     android:text="@{result.summary}"
                     app:layout_constraintEnd_toEndOf="@+id/titleTextView"
@@ -84,7 +81,7 @@
                     android:id="@+id/favoriteImageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="32dp"
                     android:contentDescription="@string/favorite"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -153,10 +150,11 @@
                     android:fontFamily="@font/poppins"
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
+                    android:text="@string/vegan"
+                    android:textAllCaps="true"
                     app:applyVeganColor="@{result.vegan}"
                     app:layout_constraintStart_toEndOf="@+id/clockTextView"
-                    app:layout_constraintTop_toBottomOf="@+id/veganImageView"
-                    tools:text="VEGAN" />
+                    app:layout_constraintTop_toBottomOf="@+id/veganImageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
