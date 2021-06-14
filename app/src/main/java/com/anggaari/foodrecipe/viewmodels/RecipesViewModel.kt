@@ -1,8 +1,11 @@
 package com.anggaari.foodrecipe.viewmodels
 
 import android.app.Application
+import android.widget.Toast
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
+import com.anggaari.foodrecipe.R
 import com.anggaari.foodrecipe.data.DataStoreRepository
 import com.anggaari.foodrecipe.utils.Constants.Companion.API_KEY
 import com.anggaari.foodrecipe.utils.Constants.Companion.DEFAULT_DIET_TYPE
@@ -28,11 +31,20 @@ class RecipesViewModel @Inject constructor(
     private var mealType = DEFAULT_MEAL_TYPE
     private var dietType = DEFAULT_DIET_TYPE
 
+    var networkStatus = false
+    var backOnline = false
+
     val readMealAndDietType = dataStoreRepository.readMealAndDietType
+    val readBackOnline = dataStoreRepository.readBackOnline.asLiveData()
 
     fun saveMealAndDietType(mealType: String, mealTypeId: Int, dietType: String, dietTypeId: Int) =
         viewModelScope.launch(Dispatchers.IO) {
             dataStoreRepository.saveMealAndDietType(mealType, mealTypeId, dietType, dietTypeId)
+        }
+
+    private fun saveBackOnline(backOnline: Boolean) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveBackOnline(backOnline)
         }
 
     fun applyQueries(): HashMap<String, String> {
@@ -53,5 +65,17 @@ class RecipesViewModel @Inject constructor(
         queries[QUERY_FILL_INGREDIENT] = "true"
 
         return queries
+    }
+
+    fun showNetworkStatus() {
+        if (!networkStatus) {
+            Toast.makeText(getApplication(), R.string.no_internet_connection, Toast.LENGTH_SHORT).show()
+            saveBackOnline(true)
+        } else if (networkStatus) {
+            if (backOnline) {
+                Toast.makeText(getApplication(), R.string.back_online, Toast.LENGTH_SHORT).show()
+                saveBackOnline(false)
+            }
+        }
     }
 }

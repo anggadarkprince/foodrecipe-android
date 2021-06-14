@@ -17,10 +17,12 @@ import com.anggaari.foodrecipe.viewmodels.MainViewModel
 import com.anggaari.foodrecipe.adapters.RecipesAdapter
 import com.anggaari.foodrecipe.databinding.FragmentRecipesBinding
 import com.anggaari.foodrecipe.utils.MarginItemDecoration
+import com.anggaari.foodrecipe.utils.NetworkListener
 import com.anggaari.foodrecipe.utils.NetworkResult
 import com.anggaari.foodrecipe.utils.observeOnce
 import com.anggaari.foodrecipe.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -33,6 +35,8 @@ class RecipesFragment : Fragment() {
     private lateinit var mainViewModel: MainViewModel
     private lateinit var recipeViewModel: RecipesViewModel
     private val adapter by lazy { RecipesAdapter() }
+
+    private lateinit var networkListener: NetworkListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,10 +54,27 @@ class RecipesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
 
         setupRecyclerView()
-        readDatabase()
+        recipeViewModel.readBackOnline.observe(viewLifecycleOwner, {
+            recipeViewModel.backOnline = it
+        })
+
+        lifecycleScope.launch {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect { status ->
+                    Log.d("NetworkListener", status.toString())
+                    recipeViewModel.networkStatus = status
+                    recipeViewModel.showNetworkStatus()
+                    readDatabase()
+                }
+        }
 
         binding.recipeFloatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_recipesFragment_to_recipeBottomSheet)
+            if (recipeViewModel.networkStatus) {
+                findNavController().navigate(R.id.action_recipesFragment_to_recipeBottomSheet)
+            } else {
+                recipeViewModel.showNetworkStatus()
+            }
         }
 
         return binding.root;
@@ -62,7 +83,13 @@ class RecipesFragment : Fragment() {
     private fun setupRecyclerView() {
         binding.recipeRecyclerView.adapter = adapter
         binding.recipeRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recipeRecyclerView.addItemDecoration(MarginItemDecoration(resources.getDimensionPixelSize(R.dimen.defaultSpace)))
+        binding.recipeRecyclerView.addItemDecoration(
+            MarginItemDecoration(
+                resources.getDimensionPixelSize(
+                    R.dimen.defaultSpace
+                )
+            )
+        )
         showShimmerEffect()
     }
 
