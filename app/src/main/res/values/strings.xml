@@ -31,4 +31,5 @@
     <string name="vegetarian">Vegetarian</string>
     <string name="apply_filter">Apply Filter</string>
     <string name="back_online">We\'re back online</string>
+    <string name="search">Search</string>
 </resources>
