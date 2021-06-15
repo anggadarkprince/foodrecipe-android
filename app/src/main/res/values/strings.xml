@@ -29,9 +29,11 @@
     <string name="primal">Primal</string>
     <string name="whole30">Whole30</string>
     <string name="vegetarian">Vegetarian</string>
+    <string name="cheap">Cheap</string>
+    <string name="healthy">Healthy</string>
+    <string name="diary_free">Diary Free</string>
     <string name="apply_filter">Apply Filter</string>
     <string name="back_online">We\'re back online</string>
     <string name="search">Search</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="description">Description</string>
 </resources>
