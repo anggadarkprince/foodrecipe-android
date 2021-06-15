@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/ingredients_cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="10dp"
+        app:strokeColor="@color/strokeColor"
+        app:strokeWidth="1dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ingredient_background"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="2dp"
+            android:background="@color/cardBackgroundColor">
+
+            <View
+                android:id="@+id/white_background"
+                android:layout_width="120dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/ingredientImageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                app:layout_constraintStart_toStartOf="@+id/white_background"
+                app:layout_constraintEnd_toEndOf="@+id/white_background"
+                app:layout_constraintTop_toTopOf="@+id/white_background"
+                app:layout_constraintBottom_toBottomOf="@+id/white_background"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/ingredients" />
+
+            <TextView
+                android:id="@+id/ingredientName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                tools:text="Ingredient Title"
+                android:fontFamily="@font/poppins_semibold"
+                android:textSize="20sp"
+                android:textColor="@color/titleColor"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/white_background"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/ingredientAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="100"
+                app:layout_constraintStart_toStartOf="@+id/ingredientName"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientName" />
+
+            <TextView
+                android:id="@+id/ingredientUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Grams"
+                android:fontFamily="@font/poppins"
+                app:layout_constraintBottom_toBottomOf="@+id/ingredientAmount"
+                app:layout_constraintStart_toEndOf="@+id/ingredientAmount"
+                app:layout_constraintTop_toTopOf="@+id/ingredientAmount" />
+
+            <TextView
+                android:id="@+id/ingredientConsistency"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Consistency"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ingredientAmount"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientAmount" />
+
+            <TextView
+                android:id="@+id/ingredientOriginal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="12dp"
+                android:layout_marginBottom="12dp"
+                android:fontFamily="@font/poppins"
+                android:text="Original"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/ingredientConsistency"
+                app:layout_constraintTop_toBottomOf="@+id/ingredientConsistency"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,6 +13,7 @@ import com.anggaari.foodrecipe.R
 import com.anggaari.foodrecipe.databinding.FragmentOverviewBinding
 import com.anggaari.foodrecipe.databinding.FragmentRecipesBinding
 import com.anggaari.foodrecipe.models.Result
+import com.anggaari.foodrecipe.utils.Constants.Companion.RECIPE_RESULT_KEY
 import org.jsoup.Jsoup
 
 class OverviewFragment : Fragment() {
@@ -26,7 +27,7 @@ class OverviewFragment : Fragment() {
         _binding = FragmentOverviewBinding.inflate(inflater, container, false)
 
         val args = arguments
-        val myBundle: Result? = args?.getParcelable("recipeBundle")
+        val myBundle: Result? = args?.getParcelable(RECIPE_RESULT_KEY)
 
         Log.d("OverviewFragment", myBundle.toString())
 
