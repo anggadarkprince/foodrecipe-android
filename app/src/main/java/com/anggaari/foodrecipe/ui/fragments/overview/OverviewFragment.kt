@@ -6,12 +6,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.core.content.ContextCompat
 import coil.load
 import com.anggaari.foodrecipe.R
 import com.anggaari.foodrecipe.databinding.FragmentOverviewBinding
-import com.anggaari.foodrecipe.databinding.FragmentRecipesBinding
 import com.anggaari.foodrecipe.models.Result
 import com.anggaari.foodrecipe.utils.Constants.Companion.RECIPE_RESULT_KEY
 import org.jsoup.Jsoup
