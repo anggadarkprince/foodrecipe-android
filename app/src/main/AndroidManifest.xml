@@ -17,8 +17,10 @@
         android:theme="@style/SplashScreenStyle">
         <activity android:name=".ui.DetailActivity"
             android:theme="@style/DetailActivityStyle"
+            android:screenOrientation="fullSensor"
             android:label="Details"/>
-        <activity android:name=".ui.MainActivity">
+        <activity android:name=".ui.MainActivity"
+            android:screenOrientation="fullSensor">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
