@@ -20,6 +20,7 @@ import com.anggaari.foodrecipe.ui.fragments.instruction.InstructionFragment
 import com.anggaari.foodrecipe.ui.fragments.overview.OverviewFragment
 import com.anggaari.foodrecipe.viewmodels.MainViewModel
 import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.Exception
 
@@ -33,6 +34,8 @@ class DetailActivity : AppCompatActivity() {
 
     private var recipeSaved = false
     private var savedRecipeId = 0
+
+    private lateinit var menuItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,15 +61,18 @@ class DetailActivity : AppCompatActivity() {
         val resultBundle = Bundle()
         resultBundle.putParcelable("recipeBundle", args.result)
 
-        val adapter = PagerAdapter(
+        val pagerAdapter = PagerAdapter(
             resultBundle,
             fragments,
-            titles,
-            supportFragmentManager
+            this
         )
 
-        binding.viewPager.adapter = adapter
-        binding.tabLayout.setupWithViewPager(binding.viewPager)
+        binding.viewPager.apply {
+            adapter = pagerAdapter
+        }
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            tab.text = titles[position]
+        }.attach()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -86,8 +92,8 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.details_menu, menu)
 
-        val menuItem = menu?.findItem(R.id.save_to_favorites_menu)
-        checkSavedRecipes(menuItem!!)
+        menuItem = menu!!.findItem(R.id.save_to_favorites_menu)
+        checkSavedRecipes(menuItem)
 
         return true
     }
@@ -95,7 +101,6 @@ class DetailActivity : AppCompatActivity() {
     private fun checkSavedRecipes(menuItem: MenuItem) {
         mainViewModel.readFavoriteRecipes.observe(this, { favoriteEntity ->
             try {
-                changeMenuItemColor(menuItem, R.color.white)
                 for (savedRecipe in favoriteEntity) {
                     if (savedRecipe.result.id == args.result.id) {
                         changeMenuItemColor(menuItem, R.color.yellow)
@@ -143,6 +148,10 @@ class DetailActivity : AppCompatActivity() {
 
     private fun changeMenuItemColor(item: MenuItem, color: Int) {
         item.icon.setTint(ContextCompat.getColor(this, color))
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        changeMenuItemColor(menuItem, R.color.white)
     }
 }

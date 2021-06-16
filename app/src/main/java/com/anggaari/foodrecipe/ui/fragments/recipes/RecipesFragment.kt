@@ -60,7 +60,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
             recipeViewModel.backOnline = it
         })
 
-        lifecycleScope.launch {
+        lifecycleScope.launchWhenStarted {
             networkListener = NetworkListener()
             networkListener.checkNetworkAvailability(requireContext())
                 .collect { status ->
@@ -198,8 +198,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         binding.recipeRecyclerView.hideShimmer()
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
 

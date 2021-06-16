@@ -70,6 +70,7 @@ class FavoriteRecipesAdapter(
         when (selectedRecipes.size) {
             0 -> {
                 actionMode.finish()
+                multiSelection = false
             }
             1 -> {
                 actionMode.title = "${selectedRecipes.size} item selected"
@@ -113,7 +114,7 @@ class FavoriteRecipesAdapter(
                 applySelection(holder, currentRecipe)
                 true
             } else {
-                multiSelection = false
+                applySelection(holder, currentRecipe)
                 false
             }
         }

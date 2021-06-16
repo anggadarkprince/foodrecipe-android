@@ -99,7 +99,7 @@
                     android:fontFamily="@font/poppins"
                     android:textAlignment="center"
                     android:textColor="@color/red"
-                    app:setNumberOfLikes="@{result.aggregateLikes}"
+                    android:text="@{String.valueOf(result.aggregateLikes)}"
                     app:layout_constraintStart_toStartOf="@+id/descriptionTextView"
                     app:layout_constraintTop_toBottomOf="@+id/favoriteImageView"
                     tools:text="100" />
@@ -124,9 +124,9 @@
                     android:gravity="center_horizontal"
                     android:textAlignment="center"
                     android:textColor="@color/yellow"
+                    android:text="@{String.valueOf(result.readyInMinutes)}"
                     app:layout_constraintStart_toEndOf="@+id/favoriteTextView"
                     app:layout_constraintTop_toBottomOf="@+id/clockImageView"
-                    app:setNumberOfMinutes="@{result.readyInMinutes}"
                     tools:text="60" />
 
                 <ImageView

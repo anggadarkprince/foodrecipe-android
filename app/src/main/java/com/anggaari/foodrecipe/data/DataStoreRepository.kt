@@ -16,9 +16,10 @@ import kotlinx.coroutines.flow.map
 import java.io.IOException
 import javax.inject.Inject
 
+private val Context.dataStore by preferencesDataStore(PREFERENCES_NAME)
+
 @ActivityRetainedScoped
 class DataStoreRepository @Inject constructor(@ApplicationContext private val context: Context) {
-    private val Context.dataStore by preferencesDataStore(PREFERENCES_NAME)
 
     private object PreferenceKeys {
         val selectedMealType = stringPreferencesKey(Constants.PREFERENCES_MEAL_TYPE)
