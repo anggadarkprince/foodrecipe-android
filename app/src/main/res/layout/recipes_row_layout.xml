@@ -31,7 +31,7 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/white">
+                android:background="@color/cardBackgroundColor">
 
                 <ImageView
                     android:id="@+id/recipeImageView"
@@ -55,7 +55,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins_semibold"
                     android:maxLines="2"
-                    android:textColor="@color/darker"
+                    android:textColor="@color/titleColor"
                     android:textSize="18sp"
                     android:text="@{result.title}"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -71,7 +71,7 @@
                     android:ellipsize="end"
                     android:fontFamily="@font/poppins"
                     android:maxLines="2"
-                    android:textColor="@color/darkGray"
+                    android:textColor="@color/descriptionColor"
                     app:parseHtml="@{result.summary}"
                     app:layout_constraintEnd_toEndOf="@+id/titleTextView"
                     app:layout_constraintStart_toStartOf="@+id/titleTextView"
