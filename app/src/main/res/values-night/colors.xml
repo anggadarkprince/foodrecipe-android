@@ -12,7 +12,7 @@
     <color name="mediumGray">#D1D1D1</color>
     <color name="lightMediumGray">#80D1D1D1</color>
     <color name="darkGray">#4B4B4B</color>
-    <color name="dark">#313C44</color>
+    <color name="dark">#2A333A</color>
     <color name="darker">#151B20</color>
     <color name="black">#000000</color>
     <color name="red">#FF4646</color>
@@ -20,21 +20,23 @@
     <color name="green">#00C980</color>
 
     <color name="backgroundColor">@color/dark</color>
+    <color name="placeholderColor">@color/darker</color>
+    <color name="itemColor">@color/mediumGray</color>
 
-    <color name="checkedChipBackgroundColor">#206200EA</color>
-    <color name="chipBackgroundColor">@color/lightGray</color>
-    <color name="checkedChipTextColor">@color/colorPrimary</color>
-    <color name="chipTextColor">@color/darkGray</color>
+    <color name="checkedChipBackgroundColor">@color/dark</color>
+    <color name="chipBackgroundColor">@color/darker</color>
+    <color name="checkedChipTextColor">@color/lightGray</color>
+    <color name="chipTextColor">@color/lightGray</color>
 
-    <color name="strokeColor">@color/mediumGray</color>
+    <color name="strokeColor">@color/darker</color>
     <color name="cardBackgroundColor">@color/darker</color>
     <color name="cardBackgroundLightColor">#306200EA</color>
     <color name="titleColor">@color/mediumGray</color>
     <color name="descriptionColor">@color/mediumGray</color>
 
     <color name="statusBarColor">@color/black</color>
-    <color name="contextualStatusBarColor">@color/darker</color>
-    <color name="contextualActionBarColor">@color/dark</color>
+    <color name="contextualStatusBarColor">@color/black</color>
+    <color name="contextualActionBarColor">@color/darker</color>
     <color name="actionBarBackgroundColor">@color/darker</color>
 
     <color name="bottomNavBackground">@color/darker</color>

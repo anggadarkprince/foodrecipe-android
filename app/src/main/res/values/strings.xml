@@ -43,4 +43,6 @@
     <string name="delete_all">Delete All</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="share">Share</string>
+    <string name="veg">VEG</string>
+    <string name="main_image">Main image</string>
 </resources>

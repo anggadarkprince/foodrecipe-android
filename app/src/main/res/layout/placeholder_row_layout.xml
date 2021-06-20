@@ -9,7 +9,7 @@
         android:id="@+id/view"
         android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -18,7 +18,7 @@
         android:id="@+id/view2"
         android:layout_width="0dp"
         android:layout_height="30dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         android:layout_marginStart="12dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="12dp"
@@ -31,7 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="12dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintEnd_toEndOf="@+id/view2"
         app:layout_constraintStart_toStartOf="@+id/view2"
         app:layout_constraintTop_toBottomOf="@+id/view2" />
@@ -42,7 +42,7 @@
         android:layout_height="36dp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/view3"
         app:layout_constraintTop_toBottomOf="@+id/view3" />
@@ -52,7 +52,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintStart_toEndOf="@+id/view6"
         app:layout_constraintTop_toTopOf="@+id/view6" />
 
@@ -61,7 +61,7 @@
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_marginStart="16dp"
-        android:background="@color/mediumGray"
+        android:background="@color/placeholderColor"
         app:layout_constraintStart_toEndOf="@+id/view4"
         app:layout_constraintTop_toTopOf="@+id/view4" />
 </androidx.constraintlayout.widget.ConstraintLayout>
