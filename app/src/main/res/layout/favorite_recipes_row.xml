@@ -38,7 +38,6 @@
                     android:layout_height="0dp"
                     android:contentDescription="@string/recipe_image"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_error_placeholder"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"

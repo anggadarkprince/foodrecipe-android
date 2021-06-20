@@ -83,9 +83,9 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
     }
 
     private fun setupRecyclerView() {
-        binding.recipeRecyclerView.adapter = adapter
-        binding.recipeRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        binding.recipeRecyclerView.addItemDecoration(
+        binding.recyclerview.adapter = adapter
+        binding.recyclerview.layoutManager = LinearLayoutManager(requireContext())
+        binding.recyclerview.addItemDecoration(
             MarginItemDecoration(
                 resources.getDimensionPixelSize(
                     R.dimen.defaultSpace
@@ -120,8 +120,8 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
             mainViewModel.readRecipes.observeOnce(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty() && !args.backFromBottomSheet) {
                     Log.d("RecipesFragment", "readDatabase() called")
-                    Log.d("RecipesFragment", database[0].foodRecipe.toString())
-                    adapter.setData(database[0].foodRecipe)
+                    Log.d("RecipesFragment", database.first().foodRecipe.toString())
+                    adapter.setData(database.first().foodRecipe)
                     hideShimmerEffect()
                 } else {
                     requestApiData()
@@ -138,6 +138,7 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
                 is NetworkResult.Success -> {
                     hideShimmerEffect()
                     response.data?.let { adapter.setData(it) }
+                    recipeViewModel.saveMealAndDietType()
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
@@ -184,18 +185,22 @@ class RecipesFragment : Fragment(), SearchView.OnQueryTextListener {
         lifecycleScope.launch {
             mainViewModel.readRecipes.observe(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
-                    adapter.setData(database[0].foodRecipe)
+                    adapter.setData(database.first().foodRecipe)
                 }
             })
         }
     }
 
     private fun showShimmerEffect() {
-        binding.recipeRecyclerView.showShimmer()
+        binding.shimmerFrameLayout.startShimmer()
+        binding.shimmerFrameLayout.visibility = View.VISIBLE
+        binding.recyclerview.visibility = View.GONE
     }
 
     private fun hideShimmerEffect() {
-        binding.recipeRecyclerView.hideShimmer()
+        binding.shimmerFrameLayout.stopShimmer()
+        binding.shimmerFrameLayout.visibility = View.GONE
+        binding.recyclerview.visibility = View.VISIBLE
     }
 
     override fun onDestroyView() {
